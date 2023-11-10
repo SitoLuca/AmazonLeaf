@@ -1,0 +1,130 @@
+{
+  "pakages": [
+    {
+      "Destination": "123 Main Street",
+      "Code": "ABC123",
+      "vol": "5 L",
+      "wei": "2.5 kg"
+    },
+    {
+      "Destination": "456 Oak Avenue",
+      "Code": "DEF456",
+      "vol": "8 L",
+      "wei": "3.2 kg"
+    },
+    {
+      "Destination": "789 Pine Lane",
+      "Code": "GHI789",
+      "vol": "3 L",
+      "wei": "1.8 kg"
+    },
+    {
+      "Destination": "101 Maple Drive",
+      "Code": "JKL101",
+      "vol": "10 L",
+      "wei": "4.5 kg"
+    },
+    {
+      "Destination": "202 Cedar Street",
+      "Code": "MNO202",
+      "vol": "6 L",
+      "wei": "2.8 kg"
+    },
+    {
+      "Destination": "303 Elm Court",
+      "Code": "PQR303",
+      "vol": "4 L",
+      "wei": "1.5 kg"
+    },
+    {
+      "Destination": "404 Birch Lane",
+      "Code": "STU404",
+      "vol": "7 L",
+      "wei": "3.0 kg"
+    },
+    {
+      "Destination": "505 Pineapple Road",
+      "Code": "VWX505",
+      "vol": "9 L",
+      "wei": "4.2 kg"
+    },
+    {
+      "Destination": "606 Mango Avenue",
+      "Code": "YZ606",
+      "vol": "2 L",
+      "wei": "1.0 kg"
+    },
+    {
+      "Destination": "707 Coconut Court",
+      "Code": "ABC707",
+      "vol": "12 L",
+      "wei": "5.5 kg"
+    },
+    {
+      "Destination": "808 Lemon Street",
+      "Code": "DEF808",
+      "vol": "15 L",
+      "wei": "6.8 kg"
+    },
+    {
+      "Destination": "909 Banana Lane",
+      "Code": "GHI909",
+      "vol": "3 L",
+      "wei": "1.2 kg"
+    },
+    {
+      "Destination": "111 Strawberry Road",
+      "Code": "JKL111",
+      "vol": "8 L",
+      "wei": "3.5 kg"
+    },
+    {
+      "Destination": "222 Raspberry Avenue",
+      "Code": "MNO222",
+      "vol": "6 L",
+      "wei": "2.5 kg"
+    },
+    {
+      "Destination": "333 Blueberry Court",
+      "Code": "PQR333",
+      "vol": "4 L",
+      "wei": "1.7 kg"
+    },
+    {
+      "Destination": "444 Grape Lane",
+      "Code": "STU444",
+      "vol": "7 L",
+      "wei": "3.2 kg"
+    },
+    {
+      "Destination": "555 Orange Road",
+      "Code": "VWX555",
+      "vol": "9 L",
+      "wei": "4.0 kg"
+    },
+    {
+      "Destination": "666 Kiwi Avenue",
+      "Code": "YZ666",
+      "vol": "2 L",
+      "wei": "1.3 kg"
+    },
+    {
+      "Destination": "777 Plum Court",
+      "Code": "ABC777",
+      "vol": "12 L",
+      "wei": "5.0 kg"
+    },
+    {
+      "Destination": "888 Mango Lane",
+      "Code": "DEF888",
+      "vol": "10 L",
+      "wei": "4.2 kg"
+    },
+    {
+      "Destination": "999 Pineapple Street" ,
+      "Code": "GHI999",
+      "vol": "5 L",
+      "wei": "2.0 kg"
+    }
+  ]
+}

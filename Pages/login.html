@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="/CSS/login.css">
+        <script type="text/javascript" src="/JS/jquery.js"></script>
+        <script type="text/javascript" src="/JS/login.js"></script>
+    </head>
+    <body>
+        <form class="screen-1" method="post">
+            <h1>Login</h1>
+            <div class="email">
+                <label>Email</label>
+                <div class="sec-2">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" name="email" id = "email" placeholder=""/>
+                </div>
+            </div>
+            <div class="password">
+                <label>Password</label>
+                <div class="sec-2">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input class="pas" type="password" name="password" id = "psw" placeholder=""/>
+                    <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+                </div>
+            </div>
+            <input type="button" value="Login" class="login" name="login" id="loginbtn" onclick="ValidateLogin()">
+        </form>
+    </body>
+</html>

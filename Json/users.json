@@ -1,0 +1,10 @@
+{
+  "operatorCred": {
+    "email": "operator@amazonleaf.com",
+    "pass": "amazonleaf"
+  },
+  "courierCred": {
+    "email": "courier@amazonleaf.com",
+    "pass": "amazonleaf"
+  }
+}
