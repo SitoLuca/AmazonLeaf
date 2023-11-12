@@ -1,22 +1,29 @@
 function ValidateLogin() {
-    $.getJSON('/Json/users.json', function (json) {
-        console.log(json);
 
-        if (json.operatorCred.email === $("#email").val()
-            &&
-            json.operatorCred.pass === $("#psw").val()) {
+    $.ajax({
 
-            window.location.href = "/Pages/operatorHome.html"
+        url: "http://localhost:8080/login",
+        dataType: "json",
+        method: "post",
 
+        data: {
+
+            email: $("#email")[0].value,
+            psw: $("#psw")[0].value
+
+        },
+
+        success: function (res) {
+
+            console.log(res);
+
+        },
+        error: function (err) {
+            console.log(err)
         }
 
-        if (json.courierCred.email === $("#email").val()
-            &&
-            json.courierCred.pass === $("#psw").val()) {
 
-            window.location.href = "/Pages/courierHome.html"
+    })
 
-        }
 
-    });
 }
