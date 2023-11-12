@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/amazon-ember');
 
 body {
     -webkit-user-select: none;
@@ -10,6 +11,7 @@ body {
     align-items: center;
     background: #dde5f4;
     height: 100vh;
+    font-family: 'Amazon Ember', sans-serif;
 }
 
 .screen-1 {
@@ -105,12 +107,36 @@ body {
 
 .screen-1 .login {
     padding: 1em;
-    background: #82c7a5;
+    background: #0FBC88;
     color: white;
     border: none;
     border-radius: 30px;
     font-weight: 600;
     cursor: pointer;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+
+}
+
+.login:hover{
+    background: #FF9900;
+}
+
+.title{
+    transition: all .2s ease-in;
+}
+
+.title:hover{
+    text-shadow:
+    -1px 1px 0 #ccc, -2px 2px 0 #ccc,
+    -3px 3px 0 #ccc, -4px 4px 0 #ccc,
+    -5px 5px 0 #ccc, -6px 6px 0 #ccc,
+    -7px 7px 0 #ccc, -8px 8px 0 #ccc,
+    -9px 9px 0 #ccc, -10px 10px 0 #ccc,
+    -11px 11px 0 #ccc, -12px 12px 0 #ccc,
+    -20px 20px 30px rgba(0, 0, 0, 0.5);
 }
 
 .screen-1 .footer {
@@ -136,4 +162,17 @@ h1 {
 
 form {
     zoom: 150%;
+}
+
+.bottom_div {
+    width:100%;
+    position: absolute;
+    bottom:0;
+}
+.bottom_img {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
 }

@@ -5,15 +5,17 @@
         <title>Login</title>
         <link rel="stylesheet" href="/CSS/login.css">
         <script type="text/javascript" src="/JS/jquery.js"></script>
+        <script type="text/javascript" src="/JS/extra.js"></script>
         <script type="text/javascript" src="/JS/login.js"></script>
     </head>
     <body>
         <form class="screen-1" method="post">
-            <h1>Login</h1>
+            <h1 class="title" style="margin: 0;"><label style="color: #FF9900">Amazon </label><label style="color: #0FBC88">Leaf</label></h1>
+            <h2 style="margin: auto; margin-bottom: 25%;">Login</h2>
             <div class="email">
                 <label>Email</label>
                 <div class="sec-2">
-                    <ion-icon name="mail-outline"></ion-icon>
+                    <icon name="mail-outline"></icon>
                     <input type="text" name="email" id = "email" placeholder=""/>
                 </div>
             </div>
@@ -25,7 +27,10 @@
                     <ion-icon class="show-hide" name="eye-outline"></ion-icon>
                 </div>
             </div>
-            <input type="button" value="Login" class="login" name="login" id="loginbtn" onclick="ValidateLogin()">
+            <input type="button" value="Login" class="login" name="login" id="loginbtn" onclick="validateLogin()">
         </form>
+        <div class="bottom_div">
+            <img class="bottom_img" width="5%" src="../IMG/AmazonLeaflogo-transformed.png" />
+        </div>
     </body>
 </html>
