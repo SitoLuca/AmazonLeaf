@@ -2,30 +2,50 @@ $(document).ready(function () {
 
     new DataTable('#table');
 
-    $.getJSON('/Json/package.json', function (json) {
+    const xhttpr = new XMLHttpRequest();
+    xhttpr.open('POST', 'http://127.0.0.1:8000/operatorHome', true);
+    xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttpr.send()
+    xhttpr.onload = () => {
+        if (xhttpr.status === 200) {
+            const response = xhttpr.response
+            if (response !== "0") {
 
-        let p = json.pakages;
-        let newline = "";
+                const p = JSON.parse(response)
 
-        if (p.length > 0) {
+                let newline = "";
 
-            for (let i = 0; i < p.length; ++i) {
-                newline = "<tr>";
-                newline += "<td>" + p[i].Code + "</td>";
-                newline += "<td>" + p[i].Destination + "</td>";
-                newline += "<td>" + p[i].vol + "</td>";
-                newline += "<td>" + p[i].wei + "</td>";
-                newline += "<tr>";
+                if (p.length > 0) {
 
-                $("#tablebody")[0].innerHTML += newline;
+                    for (let i = 0; i < p.length; ++i) {
+                        newline = "<tr>";
+                        newline += "<td>" + p[i][0] + "</td>";
+                        newline += "<td>" + p[i][1] + "</td>";
+                        newline += "<td>" + p[i][2] + "</td>";
+                        newline += "<td>" + p[i][3] + "</td>";
+
+                        if (p[i][4] !== null) {
+                            newline += "<td style = 'color: green; font-weight: bold'>Delivered</td>";
+                        } else {
+                            newline += "<td style = 'color: gray; font-weight: bold'>Waiting...</td>";
+                        }
+
+                        newline += "<tr>";
+
+                        $("#tablebody")[0].innerHTML += newline;
+                    }
+
+                } else {
+                    newline = "<tr><td>No Data Found</td></tr>";
+                    $("#tablebody")[0].innerHTML += newline;
+                }
+
             }
-
         } else {
-            newline = "<tr><td>No Data Found</td></tr>";
-            $("#tablebody")[0].innerHTML += newline;
+            console.log("Error detrected")
         }
+    };
 
-    });
 
 })
 
@@ -39,20 +59,20 @@ function savepackage() {
     if (code.val() === '' || dest.val() === '' || v.val() === '' || w.val() === '') {
         alert("Not Enugh Data, fill all fields");
     } else {
-        $.getJSON('/Json/package.json', function (json) {
 
+        const xhttpr = new XMLHttpRequest();
 
-            let newpack = {Destination: dest.val() , Code: code.val(), vol: v.val(), wei: w.val()};
-            json.pakages.push(newpack)
+        xhttpr.open('POST', 'http://127.0.0.1:8000/addpkg', true);
+        xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttpr.send(JSON.stringify({"code": code.val(), "dest": dest.val(), "vol": v.val(), "wei": w.val()}))
 
-            code.val('');
-            dest.val('');
-            v.val('');
-            w.val('');
+        if (xhttpr.status === 200) {
 
-            alert("Package correctly pushed");
+            const response = xhttpr.response
+            alert(response)
+            location.reload()
 
-        })
+        }
 
     }
 
