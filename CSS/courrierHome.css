@@ -1,0 +1,31 @@
+.card {
+    width: 50rem;
+    margin: 2% auto 0;
+    padding: 2%;
+}
+
+label, input {
+    display: block;
+    margin-bottom: 1%;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    margin-right: 1%;
+}
+
+small {
+    display: block;
+    margin-top: 1%;
+}
+
+button[type="submit"] {
+    margin-top: 2%;
+}
+.container{
+    text-align: center;
+}
