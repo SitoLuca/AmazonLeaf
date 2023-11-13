@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/CSS/login.css">
+    <script type="text/javascript" src="/JS/jquery.js"></script>
+    <script type="text/javascript" src="/JS/extra.js"></script>
+    <script type="text/javascript" src="/JS/login.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .colored-div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #3498db; /* Set your desired background color */
+            opacity: 0.7; /* Adjust opacity as needed */
+            z-index: 1; /* Make sure the colored div is behind the image */
+            pointer-events: none; /* Allows clicks to pass through the colored div */
+        }
+
+        /* Add this if you want the colored div to have a scroll effect */
+        .colored-div::before {
+            content: '';
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom, transparent, #3498db); /* Adjust gradient as needed */
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Add this if you want a smooth scrolling effect */
+        body {
+            overflow: hidden;
+        }
+
+        .container:hover {
+            overflow-y: scroll;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img  alt="cuia" src="../IMG/camion.png" class="box overlay">
+    <div class="colored-div"></div>
+</div>
+
+</body>
+</html>

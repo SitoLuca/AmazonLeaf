@@ -10,7 +10,6 @@ CORS(app, resources={r'*': {'origins': '*'}})
 db = sqlite3.connect('../DB/amazonleafdb.sqlite', check_same_thread=False)  # connect db
 cursor = db.cursor()
 
-
 @app.route('/addpkg', methods=['POST'])
 def addpackage():
     data = request.get_json()
@@ -19,7 +18,6 @@ def addpackage():
     cursor.execute(sql)
     db.commit()
     return "Done"
-
 
 @app.route('/operatorHome', methods=['POST'])
 def operatorhome():
@@ -31,7 +29,6 @@ def operatorhome():
         return 0
 
     return jsonify(rows)
-
 
 @app.route('/login', methods=['POST'])
 def loginendpoint():
@@ -46,11 +43,9 @@ def loginendpoint():
         sending = jsonify(rows[0])
         return sending
 
-
 @app.route('/test', methods=['GET'])
 def test():
     return "Test"
-
 
 if __name__ == "__main__":
     app.run(debug=True, host=api_host, port=api_port)
