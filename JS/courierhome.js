@@ -1,17 +1,25 @@
 $(document).ready(function () {
-
     const xhttpr = new XMLHttpRequest();
-    xhttpr.open('POST', 'http://127.0.0.1:8000/operatorHome', true);
+
+    const session = JSON.parse(readCookie("user"));
+    let id = session["id"];
+
+    xhttpr.open('POST', 'http://127.0.0.1:8000/courierHome', true);
     xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhttpr.send()
+    xhttpr.send(JSON.stringify({
+        "id": id
+    }));
+
     xhttpr.onload = () => {
         if (xhttpr.status === 200) {
-            const response = xhttpr.response
+            const response = xhttpr.response;
+
             if (response !== "0") {
 
                 const p = JSON.parse(response)
 
                 let newline = "";
+
 
                 if (p.length > 0) {
 
@@ -21,11 +29,12 @@ $(document).ready(function () {
                         newline += "<td>" + p[i][1] + "</td>";
                         newline += "<td>" + p[i][2] + "</td>";
                         newline += "<td>" + p[i][3] + "</td>";
+                        newline += "<td>" + p[i][4] + "</td>";
 
-                        if (p[i][4] !== null) {
-                            newline += "<td style = 'color: green; font-weight: bold'>Delivered</td>";
+                        if (p[i][6] === 1) {
+                            newline += "<td style = 'color: green; font-weight: bold'>Available</td>";
                         } else {
-                            newline += "<td style = 'color: gray; font-weight: bold'>Waiting...</td>";
+                            newline += "<td style = 'color: gray; font-weight: bold'>Traveling...</td>";
                         }
 
                         newline += "<tr>";
@@ -39,30 +48,48 @@ $(document).ready(function () {
                 }
 
             }
-        } else {
+        }
+        else {
             console.log("Error detrected")
         }
     };
 
 
-})
+});
 
-function savepackage() {
+$(document).ready(function () {
+    $("#calkpi").on("click", function () {
+        window.location.href = "/AmazonLeaf/Pages/calculateIS.html"
+    })
+});
 
-    let code = $("#newcode");
-    let dest = $("#newdest");
-    let v = $("#newv");
-    let w = $("#newv");
+function saveicle() {
 
-    if (code.val() === '' || dest.val() === '' || v.val() === '' || w.val() === '') {
+    let plate = $("#plate").val();
+    let fuel = $("#fuel").val();
+    let brand = $("#brand").val();
+    let maxw = $("#maxw").val();
+    let maxv = $("#maxv").val();
+
+    const session = JSON.parse(readCookie("user"));
+    let id = session["id"];
+
+    if (plate === "" || fuel === "" || brand === "" || maxw === "" || maxv === "") {
         alert("Not Enugh Data, fill all fields");
     } else {
 
         const xhttpr = new XMLHttpRequest();
 
-        xhttpr.open('POST', 'http://127.0.0.1:8000/addpkg', true);
+        xhttpr.open('POST', 'http://127.0.0.1:8000/addveicle', true);
         xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttpr.send(JSON.stringify({"code": code.val(), "dest": dest.val(), "vol": v.val(), "wei": w.val()}))
+        xhttpr.send(JSON.stringify({
+            "plate": plate,
+            "fuel": fuel,
+            "brand": brand,
+            "maxW": maxw,
+            "maxV": maxv,
+            "id": id
+        }));
 
         if (xhttpr.status === 200) {
 
@@ -73,6 +100,7 @@ function savepackage() {
         }
 
     }
-
 }
+
+
 

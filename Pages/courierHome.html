@@ -2,9 +2,84 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
+        <title>Courier Home</title>
+        <link rel="stylesheet" href="../CSS/courrierHome.css">
+        <script type="text/javascript" src="/JS/jquery.js"></script>
+        <script type="text/javascript" src="/JS/extra.js"></script>
+        <script type="text/javascript" src="/JS/courierhome.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+
     </head>
     <body>
-        Corriere Home
+        <iframe src="Components/couriernavbar.html" width="100%"></iframe>
+        <div class="btn-5" id="calkpi" style="position: absolute; right: 0" >
+            Calculate Your Sustainability Index
+        </div>
+        <div class="table-wrapper">
+            <h1>Your Veicles</h1>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><strong>Add Veicle</strong></button>
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <td>
+                            <h4>Plate</h4>
+                        </td>
+                        <td>
+                            <h4>Fuel</h4>
+                        </td>
+                        <td>
+                            <h4>Max Weight</h4>
+                        </td>
+                        <td>
+                            <h4>Max Volume</h4>
+                        </td>
+
+                        <td>
+                            <h4>Brand</h4>
+                        </td>
+
+                        <td>
+                            <h4>Status</h4>
+                        </td>
+
+                    </tr>
+                </thead>
+                <tbody id="tablebody">
+                    <!--Filled by js-->
+                </tbody>
+            </table>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New Veicle</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <input type="text" class="form-control" id="plate" placeholder="Plate">
+                        <input type="text" class="form-control" id="fuel" placeholder="Fuel">
+                        <input type="text" class="form-control" id="brand" placeholder="Brand">
+                        <input type="number" step="0.01" class="form-control" id="maxw" placeholder="Max Weight">
+                        <input type="number" step="0.01" class="form-control" id="maxv" placeholder="Max Volume">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="saveicle()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
