@@ -31,15 +31,23 @@
                 crossorigin="anonymous"></script>
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-
+        <style>
+            #arrangement_tab #courier_tab #package_tab {
+                border-collapse: collapse;
+                border-radius: 1em;
+                overflow: hidden;
+            }
+        </style>
     </head>
     <body>
         <div id="navbar_load"></div>
-
-        <table id="package_tab">
+<div class = "tables_wrapper">
+        <table id="package_tab" style="height: fit-content">
             <thead>
                 <tr>
-                    <h1>Packages</h1>
+                    <td colspan="4">
+                        Packages
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -58,10 +66,12 @@
             </thead>
         </table>
 
-        <table id="arrangement_tab">
+        <table id="arrangement_tab" style="height: fit-content">
             <thead>
                 <tr>
-                    <h1>Package Arrangement</h1>
+                    <td colspan="4">
+                    Package Arrangement
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -77,17 +87,19 @@
             </thead>
         </table>
 
-        <table id="courier_tab">
+        <table id="courier_tab" style="height: fit-content">
             <thead>
                 <tr>
-                    <h1>Courriers</h1>
+                    <td colspan="4">
+                    Couriers
+                    </td>
                 </tr>
                 <tr>
                     <td>
                         Name
                     </td>
                     <td>
-                        Volume
+                        Volume Available
                     </td>
                     <td>
                         KPI
@@ -95,6 +107,6 @@
                 </tr>
             </thead>
         </table>
-
+</div>
     </body>
 </html>
