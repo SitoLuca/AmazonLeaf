@@ -13,7 +13,9 @@
             <script type="text/javascript">
                 if(JSON.parse(readCookie("user")).type === "operator"){
                     document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +
-                        '                    <a class="nav-link active" href="operatorHome.html">Operator</a>\n' +
+                        '                    <a class="nav-link active" href="operatorHome.html">Home</a>\n' +
+                        '                </li>'+'<li class="nav-item">\n' +
+                        '                    <a class="nav-link active" href="ManageCouriers.html">Manage Couriers</a>\n' +
                         '                </li>'
                 } else {
                     document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +
@@ -24,10 +26,14 @@
                 }
             </script>
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <button type="button" class="btn btn-outline-success" style="padding-right: 1rem;" onclick="window.location.href='calculateIS.html'">Calculate KPI</button>
-                </li>
-                <li class="nav-item ">
+                <script type="text/javascript">
+                    if(JSON.parse(readCookie("user")).type === "courier_op") {
+                        document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +
+                            '                    <button type="button" class="btn btn-outline-success" style="padding-right: 1rem;" onclick="window.location.href=\'calculateIS.html\'">Calculate KPI</button>\n' +
+                            '                </li>'
+                    }
+                 </script>
+                    <li class="nav-item ">
                     <div class="dropdown">
                         <button class="dropbtn" id="id_user"></button>
                         <script type="text/javascript">
