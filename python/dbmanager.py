@@ -10,6 +10,26 @@ CORS(app, resources={r'*': {'origins': '*'}})
 db = sqlite3.connect('../DB/amazonleafdb.sqlite', check_same_thread=False)  # connect db
 cursor = db.cursor()
 
+@app.route('/manage_courriers', methods=['POST'])
+def manage_courriers():
+    c = db.cursor()
+    p = db.cursor()
+
+    sql = f"select * from package where id_c is null"
+    p.execute(sql)
+    pack = p.fetchall()
+
+    sql = f"select * from courier order by KPI"
+    p.execute(sql)
+    cou = p.fetchall()
+
+    data = {"Courriers": cou, "Packages": pack}
+
+    return jsonify(data)
+
+
+
+
 @app.route('/courier_opHome', methods=['POST'])
 def courier_ophome():
     data = request.get_json()

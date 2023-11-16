@@ -20,7 +20,6 @@ $(document).ready(function () {
 
                 let newline = "";
 
-
                 if (p.length > 0) {
 
                     for (let i = 0; i < p.length; ++i) {
@@ -101,6 +100,3 @@ function savehicle() {
 
     }
 }
-
-
-
