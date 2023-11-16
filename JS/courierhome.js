@@ -2,9 +2,9 @@ $(document).ready(function () {
     const xhttpr = new XMLHttpRequest();
 
     const session = JSON.parse(readCookie("user"));
-    let id = session["id"];
+    let id = session["company"];
 
-    xhttpr.open('POST', 'http://127.0.0.1:8000/courierHome', true);
+    xhttpr.open('POST', 'http://127.0.0.1:8000/courier_opHome', true);
     xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttpr.send(JSON.stringify({
         "id": id
@@ -63,7 +63,7 @@ $(document).ready(function () {
     })
 });
 
-function saveicle() {
+function savehicle() {
 
     let plate = $("#plate").val();
     let fuel = $("#fuel").val();
@@ -80,7 +80,7 @@ function saveicle() {
 
         const xhttpr = new XMLHttpRequest();
 
-        xhttpr.open('POST', 'http://127.0.0.1:8000/addveicle', true);
+        xhttpr.open('POST', 'http://127.0.0.1:8000/addvehicle', true);
         xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhttpr.send(JSON.stringify({
             "plate": plate,

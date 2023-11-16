@@ -1,4 +1,3 @@
-
 function writeCookie(name,value,days) {
     var date, expires;
     if (days) {
@@ -24,4 +23,8 @@ function readCookie(name) {
         }
     }
     return '';
+}
+
+function unsetCookie(cookieName) {
+    document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }

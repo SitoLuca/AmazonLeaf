@@ -4,9 +4,21 @@
         <meta charset="UTF-8">
         <title>Courier Home</title>
         <link rel="stylesheet" href="../CSS/courrierHome.css">
+        <link rel="stylesheet" href="/CSS/navbar.css">
+
         <script type="text/javascript" src="/JS/jquery.js"></script>
         <script type="text/javascript" src="/JS/extra.js"></script>
         <script type="text/javascript" src="/JS/courierhome.js"></script>
+        <script type="text/javascript" src="/JS/extra.js"></script>
+
+        <script type="text/javascript">
+            $(function(){
+                $("#navbar_load").load("Components/navbar.html");
+            });
+        </script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
                 integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
                 crossorigin="anonymous"></script>
@@ -18,13 +30,10 @@
 
     </head>
     <body>
-        <iframe src="Components/couriernavbar.html" width="100%"></iframe>
-        <div class="btn-5" id="calkpi" style="position: absolute; right: 0" >
-            Calculate Your Sustainability Index
-        </div>
+        <div id="navbar_load"></div>
         <div class="table-wrapper">
-            <h1>Your Veicles</h1>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><strong>Add Veicle</strong></button>
+            <h1>Your Vehicles</h1>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><strong>Add Vehicle</strong></button>
             <table style="width:100%">
                 <thead>
                     <tr>
@@ -60,7 +69,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New Veicle</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">New Vehicle</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -76,7 +85,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="saveicle()">Save changes</button>
+                        <button type="button" class="btn btn-primary" onclick="savehicle()">Save changes</button>
                     </div>
                 </div>
             </div>

@@ -10,10 +10,10 @@ CORS(app, resources={r'*': {'origins': '*'}})
 db = sqlite3.connect('../DB/amazonleafdb.sqlite', check_same_thread=False)  # connect db
 cursor = db.cursor()
 
-@app.route('/courierHome', methods=['POST'])
-def courierhome():
+@app.route('/courier_opHome', methods=['POST'])
+def courier_ophome():
     data = request.get_json()
-    sql = f"select * from veicle where id_courier = {data['id']} "
+    sql = f"select * from vehicle where id_courier = {data['id']}"
     cursor.execute(sql)
     rows = cursor.fetchall()
     db.commit()
@@ -23,10 +23,10 @@ def courierhome():
     return jsonify(rows)
 
 
-@app.route('/addveicle', methods=['POST'])
-def addveicle():
+@app.route('/addvehicle', methods=['POST'])
+def addvehicle():
     data = request.get_json()
-    sql = f"insert into veicle  values ('{data['plate']}','{data['fuel']}',{data['maxW']},{data['maxV']},'{data['brand']}',{data['id']}, 1);"
+    sql = f"insert into vehicle  values ('{data['plate']}','{data['fuel']}',{data['maxW']},{data['maxV']},'{data['brand']}',{data['id']}, 1);"
     print(sql)
     cursor.execute(sql)
     db.commit()
@@ -64,7 +64,7 @@ def loginendpoint():
 
     if len(rows) == 0:
 
-        sql = f"select * from courier o where o.email = '{data['email']}' and o.pass = '{data['password']}'"
+        sql = f"select * from courier_op o where o.email = '{data['email']}' and o.pass = '{data['password']}'"
         cursor.execute(sql)
         rows = cursor.fetchall()
         db.commit()
@@ -73,7 +73,7 @@ def loginendpoint():
             return "0"
 
         rows[0] = list(rows[0])
-        rows[0].append("courier")
+        rows[0].append("courier_op")
         sending = jsonify(rows[0])
 
         return sending

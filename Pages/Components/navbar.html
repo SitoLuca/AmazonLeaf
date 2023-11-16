@@ -1,26 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><font style="color: #FF9900; font-weight: bold">Amazon</font> <font style="color: #0FBC88; font-weight: bold">Leaf </font></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Courriers</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
 
-    </body>
-</html>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#"><label style="color: #FF9900; font-weight: bold">Amazon</label> <img alt="logo" src="/IMG/AmazonLeaflogo-transformed.png" height="40px" width="auto"> <label style="color: #0FBC88; font-weight: bold">Leaf </label></a>
+        </a>        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav_buttons">
+            </ul>
+            <script type="text/javascript">
+                if(JSON.parse(readCookie("user")).type === "operator"){
+                    document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +
+                        '                    <a class="nav-link active" href="operatorHome.html">Operator</a>\n' +
+                        '                </li>'
+                } else {
+                    document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +
+                        '                    <a class="nav-link" href="courier_opHome.html">Courier</a>\n' +
+                        '                </li><li class="nav-item">\n' +
+                        '                        <a class="nav-link" href="#">Manage Deliveries</a>\n' +
+                        '                    </li>'
+                }
+            </script>
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-success" style="padding-right: 1rem;" onclick="window.location.href='calculateIS.html'">Calculate KPI</button>
+                </li>
+                <li class="nav-item ">
+                    <div class="dropdown">
+                        <button class="dropbtn" id="id_user"></button>
+                        <script type="text/javascript">
+                            document.getElementById('id_user').innerText = `${(JSON.parse(readCookie("user")).name)} ${(JSON.parse(readCookie("user")).surname)}`;
+                        </script>
+                        <div class="dropdown-content" style="transform: translate(-50%);">
+                            <a href="user_management.php">User Management</a>
+                            <a href="logout.html">Logout</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

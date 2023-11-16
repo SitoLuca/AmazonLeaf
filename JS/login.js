@@ -14,22 +14,19 @@ function validateLogin() {
             if (response !== "0") {
                 const parsed = JSON.parse(response)
                 //console.log(parsed)
-                const obj = {"id": parsed[0], "surname": parsed[1], "name": parsed[2], "email": parsed[3]}
+                let obj = undefined;
+                if(parsed.length == 7) obj = {"id": parsed[0], "surname": parsed[2], "name": parsed[1], "email": parsed[3], "type": parsed[6], "company":parsed[5]}
+                else obj = {"id": parsed[0], "surname": parsed[2], "name": parsed[1], "email": parsed[3], "type": parsed[5]}
                 writeCookie("user", JSON.stringify(obj), 28)
 
                 console.log(parsed)
 
-                if (parsed[6] === "courier") {
-                    window.location.href = "courierHome.html";
-                }
+                console.log(obj)
+                console.log(obj.type+"Home.html");
 
-                if (parsed[6] === "operator") {
-                    window.location.href = "operatorHome.html";
-                }
-
-
+                window.location.href = obj.type+"Home.html";
             } else {
-                console.log("Utente non trovato")
+                alert("Utente non trovato")
             }
         } else {
             // Handle error
