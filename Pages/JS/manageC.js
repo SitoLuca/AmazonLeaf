@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     const xhttpr = new XMLHttpRequest();
-    xhttpr.open('POST', 'http://127.0.0.1:8000/manage_courriers', true);
+    xhttpr.open('POST', 'http://80.211.148.196:10000/manage_couriers', true);
     xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttpr.send()
 
