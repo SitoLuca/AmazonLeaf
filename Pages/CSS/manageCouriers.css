@@ -16,6 +16,7 @@ table {
 }
 
 th, td {
+    user-select: none;
     padding: 12px;
     border-bottom: 1px solid #ddd;
 }

@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
     const xhttpr = new XMLHttpRequest();
-    xhttpr.open('POST', 'http://80.211.148.196:10000/operatorHome', true);
+    const url = "http://127.0.0.1:10000";
+    xhttpr.open('POST', url+'/operatorHome', true);
     xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttpr.send()
     xhttpr.onload = () => {
@@ -53,6 +54,7 @@ function savepackage() {
     let dest = $("#newdest");
     let v = $("#newv");
     let w = $("#newv");
+    const url = "http://127.0.0.1:10000";
 
     if (code.val() === '' || dest.val() === '' || v.val() === '' || w.val() === '') {
         alert("Not Enugh Data, fill all fields");
@@ -60,7 +62,7 @@ function savepackage() {
 
         const xhttpr = new XMLHttpRequest();
 
-        xhttpr.open('POST', 'http://80.211.148.196:10000/addpkg', true);
+        xhttpr.open('POST', url+'/addpkg', true);
         xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhttpr.send(JSON.stringify({"code": code.val(), "dest": dest.val(), "vol": v.val(), "wei": w.val()}))
 

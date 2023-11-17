@@ -1,10 +1,10 @@
 $(document).ready(function () {
     const xhttpr = new XMLHttpRequest();
-
+    const url = "http://127.0.0.1:10000";
     const session = JSON.parse(readCookie("user"));
     let id = session["company"];
 
-    xhttpr.open('POST', 'http://80.211.148.196:10000/courier_opHome', true);
+    xhttpr.open('POST', url+'courier_opHome', true);
     xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttpr.send(JSON.stringify({
         "id": id
@@ -69,6 +69,7 @@ function savehicle() {
     let brand = $("#brand").val();
     let maxw = $("#maxw").val();
     let maxv = $("#maxv").val();
+    const url = "http://127.0.0.1:10000";
 
     const session = JSON.parse(readCookie("user"));
     let id = session["id"];
@@ -79,7 +80,7 @@ function savehicle() {
 
         const xhttpr = new XMLHttpRequest();
 
-        xhttpr.open('POST', 'http://80.211.148.196:10000/addvehicle', true);
+        xhttpr.open('POST', url+'/addvehicle', true);
         xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhttpr.send(JSON.stringify({
             "plate": plate,

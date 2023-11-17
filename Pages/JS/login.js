@@ -1,9 +1,11 @@
 function validateLogin() {
     const email = $('#email').val()
     const password = $('#psw').val()
+    const url = "http://127.0.0.1:10000";
+
 
     const xhttpr = new XMLHttpRequest();
-    xhttpr.open('POST', 'http://80.211.148.196:10000/login', true);
+    xhttpr.open('POST', url+'/login', true);
 
     xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttpr.send(JSON.stringify({"email": email, "password": password}));

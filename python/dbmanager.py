@@ -3,12 +3,14 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 api_port = 10000  # sul Crispy McBacon la porta 5000 e 7000 sono esclusive :-(
-api_host = '80.211.148.196'
+# api_host = '80.211.148.196'
+api_host = '127.0.0.1'
 app = Flask(__name__)
 CORS(app, resources={r'*': {'origins': '*'}})
 
 db = sqlite3.connect('../DB/amazonleafdb.sqlite', check_same_thread=False)  # connect db
 cursor = db.cursor()
+
 
 @app.route('/manage_couriers', methods=['POST'])
 def manage_courriers():
@@ -19,17 +21,16 @@ def manage_courriers():
     p.execute(sql)
     pack = p.fetchall()
 
-    sql = f"select c.*, sum(v.volumecap) as vol from courier c join vehicle v on  v.id_courier = c.id where v.available = 1 order by KPI"
+    sql = f"select c.*, sum(v.volumecap) as vol from courier c join vehicle v on  v.id_courier = c.id where v.available = 1 group by c.id order by KPI"
+
     p.execute(sql)
     cou = p.fetchall()
 
-
+    db.commit()
 
     data = {"Couriers": cou, "Packages": pack}
 
     return jsonify(data)
-
-
 
 
 @app.route('/courier_opHome', methods=['POST'])
@@ -53,6 +54,7 @@ def addvehicle():
     cursor.execute(sql)
     db.commit()
     return "Done"
+
 
 @app.route('/addpkg', methods=['POST'])
 def addpackage():
