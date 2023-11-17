@@ -8,7 +8,6 @@ $(document).ready(function () {
         if (xhttpr.status === 200) {
             const response = xhttpr.response
             const parsedResponse = JSON.parse(response)
-            console.log(parsedResponse)
             parsedResponse.Packages.forEach(function (pack) {
                 $('#package_tab')[0].innerHTML += `<tr class = 'packagerow'>` +
                     `<td id = 'code'>${pack[0]}</td><td>${pack[1]}</td><td >${pack[2]}</td><td id = 'V'>${pack[3]}</td>` +
@@ -34,14 +33,16 @@ $(document).ready(function () {
 
 });
 
+var counter = 0;
+var is_selected = 0;
+
 function putpack(elem) {
 
     if (is_selected) {
         const code = elem.find("#code")[0].innerHTML;
         const vol = elem.find("#V")[0].innerHTML;
-        console.log(vol);
+
         let volfloat = parseFloat(vol).toFixed(3);
-        console.log(volfloat);
 
         let newavalable = $("#spaceavailable")[0].innerHTML;
         newavalable = parseFloat(newavalable);
@@ -55,7 +56,8 @@ function putpack(elem) {
 
         $("#spaceavailable")[0].innerHTML = newavalable;
 
-        let newline = "<tr><td>" + code + "</td><td class = 'Vo'>" + vol + "</td></tr>";
+        counter++;
+        let newline = "<tr><td id = 'pack_" + counter + "'>" + code + "</td><td class = 'Vo'>" + vol + "</td></tr>";
 
         $("#arrangement_tab")[0].innerHTML += newline;
 
@@ -63,15 +65,17 @@ function putpack(elem) {
     }
 }
 
-var is_selected = 0;
 
 function putcur(elem) {
 
     if (!is_selected) {
         is_selected = 1;
 
+        let id = $(elem.find("td")[0]).attr("id");
+        $("#hidden_id").val(id);
+
         let name = elem.find("td")[0].innerHTML;
-        let space = elem.find("td")[1].innerHTML
+        let space = elem.find("td")[1].innerHTML;
 
         let newline = "<tr><td><td></td><td>" + name + "</td><td id = 'spaceavailable'>" + space + "</td>";
 
@@ -80,6 +84,46 @@ function putcur(elem) {
         elem.remove();
 
     }
+}
+
+function assignpackages() {
+
+    let arr = [];
+
+    let i = 1;
+    let name = "#pack_" + i;
+
+    while ($(name)[0] !== undefined) {
+
+        arr.push($(name)[0].innerHTML);
+        i++;
+        name = "#pack_" + i;
+
+    }
+
+    var j = []
+    j.push(arr);
+    j.push($("#hidden_id").val())
+
+    const parsed = JSON.parse(JSON.stringify(j));
+    console.log(parsed);
+    const url = "http://127.0.0.1:10000";
+    const xhttpr = new XMLHttpRequest();
+    xhttpr.open('POST', url + '/assign_C', true);
+
+    xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttpr.send(JSON.stringify(parsed));
+
+    xhttpr.onload = () => {
+        if (xhttpr.status === 200) {
+
+            alert("Packages Correctly Assigned")
+            location.reload();
+
+        }
+    }
+
+
 }
 
 

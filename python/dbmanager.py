@@ -12,6 +12,20 @@ db = sqlite3.connect('../DB/amazonleafdb.sqlite', check_same_thread=False)  # co
 cursor = db.cursor()
 
 
+@app.route('/assign_C', methods=['POST'])
+def assign_courriers():
+    data = request.get_json()
+    id = data.pop()
+    data = data[0]
+
+    for code in data:
+        sql = f"update package set id_c = {id} where code = '{code}'"
+        cursor.execute(sql)
+
+    db.commit()
+
+    return "Done"
+
 @app.route('/manage_couriers', methods=['POST'])
 def manage_courriers():
     c = db.cursor()
