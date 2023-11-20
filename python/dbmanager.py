@@ -2,7 +2,7 @@ import sqlite3
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-api_port = 10000  # sul Crispy McBacon la porta 5000 e 7000 sono esclusive :-(
+api_port = 10000 
 # api_host = '80.211.148.196'
 api_host = '127.0.0.1'
 app = Flask(__name__)

@@ -34,15 +34,21 @@ tr:nth-child(even) {
 }
 
 .grid {
-    opacity: 0;
-    display: grid;
+    margin-top: 40px;
+    column-gap: 120px;
+    row-gap: 40px;
+    display: none;
     grid-template-columns: auto auto;
 }
 
 .identifier {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
     justify-content: center;
     text-align: center;
     font-weight: bold;
+    font-size: 25px;
 }
 
 .center-elem {

@@ -41,7 +41,9 @@
     </head>
     <body>
         <div id="navbar_load"></div>
-
+        <input type="hidden" id="hidden_plate">
+        <input type="hidden" id="hidden_totv">
+        <input type="hidden" id="hidden_totw">
         <div class="tables_wrapper">
             <table id="package_tab" style="height: fit-content">
                 <thead>
@@ -70,15 +72,29 @@
                 <div class="center-elem">
                     <h1 id="title">Select a Vehicle</h1>
                     <div class="grid">
-                        <img src="../IMG/camion.png" style="display: ; width: 150px">
-                        <img src="../IMG/camion.png" style="display: ; width: 150px">
-                        <label class="identifier">
-                            Weight
-                        </label>
-                        <label class="identifier">
-                            Volume
-                        </label>
+                        <img src="../IMG/camion.png" style="width: 250px" id="camionV">
+                        <img src="../IMG/camion.png" style="width: 250px" id="camionW">
+                        <div class="identifier">
+                            <div>Space Left:</div> <div id = "spacevalue"></div>
+                        </div>
+                        <div class="identifier" >
+                            <div>Weight Left:</div><div id = "weightvalue"></div>
+                        </div>
                     </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Code</td>
+                                <td>Weight</td>
+                                <td>Volume</td>
+                            </tr>
+                        </thead>
+                        <tbody id="arrangement_packs">
+
+                        </tbody>
+                    </table>
+
                     <button class="btn btn-success" onclick="assigtoveicle()">Assign</button>
                 </div>
             </div>
@@ -97,7 +113,7 @@
                         <td>
                             Max Weight
                         </td>
-                        <td>
+                        <td >
                             Max Volume
                         </td>
                         <td>
