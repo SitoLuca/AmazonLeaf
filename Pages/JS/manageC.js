@@ -44,17 +44,17 @@ function putpack(elem) {
 
         let volfloat = parseFloat(vol).toFixed(3);
 
-        let newavalable = $("#spaceavailable")[0].innerHTML;
-        newavalable = parseFloat(newavalable);
-        newavalable = newavalable.toFixed(3);
-        newavalable -= volfloat;
+        let newavailable = $("#spaceavailable")[0].innerHTML;
+        newavailable = parseFloat(newavailable);
+        newavailable = newavailable.toFixed(3);
+        newavailable -= volfloat;
 
-        if (newavalable < 0) {
-            alert("not enugh space");
+        if (newavailable < 0) {
+            alert("not enough space");
             return
         }
 
-        $("#spaceavailable")[0].innerHTML = newavalable;
+        $("#spaceavailable")[0].innerHTML = newavailable;
 
         counter++;
         let newline = "<tr><td id = 'pack_" + counter + "'>" + code + "</td><td class = 'Vo'>" + vol + "</td></tr>";

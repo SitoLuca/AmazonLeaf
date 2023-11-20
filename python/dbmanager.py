@@ -11,6 +11,29 @@ CORS(app, resources={r'*': {'origins': '*'}})
 db = sqlite3.connect('../DB/amazonleafdb.sqlite', check_same_thread=False)  # connect db
 cursor = db.cursor()
 
+@app.route('/manage_deliveries', methods=['POST'])
+def manage_deliveries():
+
+    id = request.get_json()
+    id = id["ID"]
+
+    v = db.cursor()
+    p = db.cursor()
+
+    sql = f"select * from package where id_c = {id}"
+    p.execute(sql)
+    pack = p.fetchall()
+
+    sql = f"select * from vehicle where id_courier = {id} and available = 1"
+
+    v.execute(sql)
+    vei = v.fetchall()
+
+    db.commit()
+
+    data = {"Vehicles": vei, "Packages": pack}
+
+    return jsonify(data)
 
 @app.route('/assign_C', methods=['POST'])
 def assign_courriers():
@@ -25,6 +48,7 @@ def assign_courriers():
     db.commit()
 
     return "Done"
+
 
 @app.route('/manage_couriers', methods=['POST'])
 def manage_courriers():
@@ -50,7 +74,8 @@ def manage_courriers():
 @app.route('/courier_opHome', methods=['POST'])
 def courier_ophome():
     data = request.get_json()
-    sql = f"select * from vehicle where id_courier = {data['id']}"
+
+    sql = f"select v.* from vehicle v where id_courier = (select id_courier from courier_op co join courier c on co.id_courier = c.id where co.id = {data['id']})"
     cursor.execute(sql)
     rows = cursor.fetchall()
     db.commit()
@@ -63,10 +88,19 @@ def courier_ophome():
 @app.route('/addvehicle', methods=['POST'])
 def addvehicle():
     data = request.get_json()
-    sql = f"insert into vehicle  values ('{data['plate']}','{data['fuel']}',{data['maxW']},{data['maxV']},'{data['brand']}',{data['id']}, 1);"
+
+    sql = f"select id_courier from courier_op where id = {data['id']}"
+    cursor.execute(sql)
+
+    idComp = cursor.fetchall()
+
+    db.commit()
+
+    sql = f"insert into vehicle values ('{data['plate']}','{data['fuel']}',{data['maxW']},{data['maxV']},'{data['brand']}',{idComp[0][0]}, 1)"
     print(sql)
     cursor.execute(sql)
     db.commit()
+
     return "Done"
 
 

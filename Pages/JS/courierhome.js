@@ -4,7 +4,7 @@ $(document).ready(function () {
     const session = JSON.parse(readCookie("user"));
     let id = session["company"];
 
-    xhttpr.open('POST', url+'courier_opHome', true);
+    xhttpr.open('POST', url+'/courier_opHome', true);
     xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttpr.send(JSON.stringify({
         "id": id
