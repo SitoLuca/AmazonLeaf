@@ -88,16 +88,14 @@ function putpack(elem) {
             return;
         }
 
-        let maxw = $("#hidden_totv")[0].value;
-        let maxv = $("#hidden_totw")[0].value;
+        let maxw = $("#hidden_totw")[0].value;
+        let maxv = $("#hidden_totv")[0].value;
 
         actualw += wei;
         actualv += vol;
 
         let percw =  (actualw / maxw) * 100;
         let percv = (actualv / maxv) * 100;
-
-        console.log(percw,percv);
 
         let camV = $("#camionV");
         let camW = $("#camionW");
@@ -114,8 +112,6 @@ function putpack(elem) {
         if (percv > 98){
             camV.attr("src","../IMG/camion_loading_bar_full.png");
         }
-
-
 
         if (percw > 25){
             camW.attr("src","../IMG/camion_loading_bar_25.png");
