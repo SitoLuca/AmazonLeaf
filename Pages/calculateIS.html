@@ -12,10 +12,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
                 crossorigin="anonymous"></script>
+        <script type="text/javascript" src="JS/extra.js"></script>
+        <script type="text/javascript" src="JS/calculateKPI.js"></script>
     </head>
     <body>
         <div class="card">
-            <form>
+            <form method="post">
                 <div class="form-group container align-bottom">
                     <div class="row align-bottom">
                         <div class="col-sm-4 align-bottom">
@@ -64,8 +66,7 @@
                         <div class="col-sm-4 align-bottom">
                             <label for="km_metano">Percorrenza annua complessiva dei veicoli aziendali a
                                 metano</label>
-                            <input type="text" class="form-control" id="km_metano" name="km_metano"
-                                   pattern="[0-9]+">
+                            <input type="text" class="form-control" id="km_metano" name="km_metano" pattern="[0-9]+">
                         </div>
                     </div>
                     <div class="row">
@@ -119,11 +120,17 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" id="id_azienda" name="id_azienda" value="">
 
-                <button type="submit" class="btn btn-outline-success" style = "position: absolute; right: 50%; transform: translate(50%); font-size: 30px" id = "Sub-Button">Calculate your sostenibility index</button>
-
+                <button type="button" onclick="calculateKPI()" class="btn btn-outline-success" style = "position: absolute; right: 50%; transform: translate(50%); font-size: 30px" id = "Sub-Button">Calculate your sostenibility index</button>
             </form>
         </div>
-
     </body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            const user = JSON.parse(readCookie("user"));
+            $("#id_azienda")[0].value = parseInt(user.company)
+            console.log(user);
+        })
+    </script>
 </html>

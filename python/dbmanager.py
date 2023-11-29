@@ -59,7 +59,7 @@ def manage_courriers():
     p.execute(sql)
     pack = p.fetchall()
 
-    sql = f"select c.*, sum(v.volumecap) as vol from courier c join vehicle v on  v.id_courier = c.id where v.available = 1 group by c.id order by KPI"
+    sql = f"select c.*, sum(v.volumecap) as vol from courier c join vehicle v on  v.id_courier = c.id where v.available = 1 group by c.id order by c.KPI"
 
     p.execute(sql)
     cou = p.fetchall()
@@ -70,6 +70,15 @@ def manage_courriers():
 
     return jsonify(data)
 
+@app.route('/updateKPI', methods=['POST'])
+def updateKPI():
+    data = request.get_json()
+    kpi_sost = data["kpi_sost"]
+    sql = f"UPDATE courier SET KPI = {kpi_sost} WHERE id = {data['id_azienda']}"
+    print(sql)
+    cursor.execute(sql)
+    db.commit()
+    return "Done"
 
 @app.route('/courier_opHome', methods=['POST'])
 def courier_ophome():
