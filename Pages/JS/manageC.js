@@ -16,7 +16,7 @@ $(document).ready(function () {
 
             parsedResponse.Couriers.forEach(function (courier) {
                 $('#courier_tab')[0].innerHTML += `<tr class = 'currow'>` +
-                    `<td id = '${courier[0]}'><img alt="logo-courier" width="25px" style="margin-right: 2px" height="auto" src="IMG/courier/${courier[2]}">${courier[1]}</td><td>${courier[4]}</td><td>${courier[3]}</td>` +
+                    `<td id = '${courier[0]}'><img alt="logo-courier" width="25px" style="margin-right: 2px" height="auto" src="IMG/courier/${courier[2]}">${courier[1]}</td><td>${courier[4]}</td><td style='color: #0FBC88; font-weight: bold'>${courier[3]}</td>` +
                     `</tr>`;
             });
         }

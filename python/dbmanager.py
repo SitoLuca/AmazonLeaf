@@ -59,7 +59,7 @@ def manage_courriers():
     p.execute(sql)
     pack = p.fetchall()
 
-    sql = f"select c.*, sum(v.volumecap) as vol from courier c join vehicle v on  v.id_courier = c.id where v.available = 1 group by c.id order by c.KPI"
+    sql = f"select c.*, sum(v.volumecap) as vol from courier c join vehicle v on  v.id_courier = c.id where v.available = 1 group by c.id order by c.KPI desc"
 
     p.execute(sql)
     cou = p.fetchall()
@@ -145,7 +145,7 @@ def loginendpoint():
 
     if len(rows) == 0:
 
-        sql = f"select * from courier_op o where o.email = '{data['email']}' and o.pass = '{data['password']}'"
+        sql = f"select o.*, c.KPI from courier_op o join courier c on c.id = o.id_courier where o.email = '{data['email']}' and o.pass = '{data['password']}'"
         cursor.execute(sql)
         rows = cursor.fetchall()
         db.commit()

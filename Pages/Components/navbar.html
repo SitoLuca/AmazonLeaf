@@ -1,5 +1,10 @@
 
-
+<style>
+    #KPI{
+        margin-right: 10px;
+        margin-top: 7px;
+    }
+</style>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -30,14 +35,18 @@
                     if(JSON.parse(readCookie("user")).type === "courier_op") {
                         document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +
                             '                    <button type="button" class="btn btn-outline-success" style="padding-right: 1rem;" onclick="window.location.href=\'calculateIS.html\'">Calculate KPI</button>\n' +
-                            '                </li>' + '<li><a class="nav-link" href="courier_opHome.html">Home</a></li><li><a class="nav-link" href="manageDeliveries.html">Manage Deliveries</a></li><li><a class="nav-link" href="#">Manage Vehicles</a></li>'
+                            '                </li>' + '<li><a class="nav-link" href="courier_opHome.html">Home</a></li><li><a class="nav-link" href="manageDeliveries.html">Manage Deliveries</a></li><li><a class="nav-link" href="manageVeichles.html">Manage Vehicles</a></li>'
                     }
                  </script>
+                <li class="nav-item"><label id="KPI"></label></li>
                     <li class="nav-item ">
                     <div class="dropdown">
                         <button class="dropbtn" id="id_user"></button>
                         <script type="text/javascript">
                             document.getElementById('id_user').innerText = `${(JSON.parse(readCookie("user")).name)} ${(JSON.parse(readCookie("user")).surname)}`;
+                            if(JSON.parse(readCookie("user")).KPI !== null) {
+                                document.getElementById('KPI').innerText += "KPI: " + parseFloat(`${(JSON.parse(readCookie("user")).KPI)}`).toFixed(2);
+                            }
                         </script>
                         <div class="dropdown-content" style="transform: translate(-50%);">
                             <a href="user_management.php">User Management</a>

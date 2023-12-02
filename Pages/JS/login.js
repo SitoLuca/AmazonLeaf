@@ -17,7 +17,7 @@ function validateLogin() {
                 const parsed = JSON.parse(response)
                 //console.log(parsed)
                 let obj = undefined;
-                if(parsed.length == 7) obj = {"id": parsed[0], "surname": parsed[2], "name": parsed[1], "email": parsed[3], "type": parsed[6], "company":parsed[5]}
+                if(parsed.length == 8) obj = {"id": parsed[0], "surname": parsed[2], "name": parsed[1], "email": parsed[3], "type": parsed[7], "company":parsed[5], "KPI": parsed[6]}
                 else obj = {"id": parsed[0], "surname": parsed[2], "name": parsed[1], "email": parsed[3], "type": parsed[5]}
                 writeCookie("user", JSON.stringify(obj), 28)
 
