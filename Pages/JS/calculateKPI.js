@@ -21,7 +21,6 @@ function calculateKPI() {
 
 
     const kpi_sost = ((energia_elettrica * 0.36) + (fotovoltaico * 0.053) + (metano * 1.8) + (gpl * 1.61) + (gasolio * 3.14) - (km_benzina * 0.189) + (km_diesel * 0.196) + (km_gpl*0.134) + (km_metano * 0.114) + (km_eletric*0.02) + (km_plug*0.085) + (km_mid*0.125) + (voli_brevi*0.066*1600) + (voli_medi*0.066*3200) + (voli_lunghi*0.066*4800) + (voli_xl*0.066*6400))/num_dipendenti;
-    console.log(kpi_sost)
     const xhttpr = new XMLHttpRequest();
     xhttpr.open('POST', url+'/updateKPI', true);
 
