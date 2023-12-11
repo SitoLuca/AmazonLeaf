@@ -146,3 +146,9 @@ function putpack(elem) {
     }
 
 }
+
+function assigtoveicle() {
+    if(is_selected && counter > 0){
+        console.log("napoli");
+    }
+}

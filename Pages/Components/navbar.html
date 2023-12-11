@@ -44,7 +44,7 @@
                         <button class="dropbtn" id="id_user"></button>
                         <script type="text/javascript">
                             document.getElementById('id_user').innerText = `${(JSON.parse(readCookie("user")).name)} ${(JSON.parse(readCookie("user")).surname)}`;
-                            if(JSON.parse(readCookie("user")).KPI !== null) {
+                            if(JSON.parse(readCookie("user")).type === "courier") {
                                 document.getElementById('KPI').innerText += "KPI: " + parseFloat(`${(JSON.parse(readCookie("user")).KPI)}`).toFixed(2);
                             }
                         </script>
