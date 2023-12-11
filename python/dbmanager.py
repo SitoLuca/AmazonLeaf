@@ -1,8 +1,9 @@
 import sqlite3
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from datetime import date
 
-api_port = 10000 
+api_port = 10000
 # api_host = '80.211.148.196'
 api_host = '127.0.0.1'
 app = Flask(__name__)
@@ -11,9 +12,23 @@ CORS(app, resources={r'*': {'origins': '*'}})
 db = sqlite3.connect('../DB/amazonleafdb.sqlite', check_same_thread=False)  # connect db
 cursor = db.cursor()
 
+
+@app.route('/return_veichle', methods=['POST'])
+def return_veichle():
+    data = request.get_json()
+
+    sql = f"update package set isDelivered = 1, delivery_date = '{date.today()}' where isDelivered != 1 and id_v = '{data['plate']}'"
+    cursor.execute(sql)
+    sql = f"update vehicle set available = 1 where plate = '{data['plate']}'"
+    cursor.execute(sql)
+
+    db.commit()
+
+    return "Done"
+
+
 @app.route('/manage_veichles', methods=['POST'])
 def manage_veichles():
-
     data = request.get_json()
 
     sql = f"select plate from vehicle v where v.id_courier = {data['idc']} and available = false"
@@ -25,9 +40,9 @@ def manage_veichles():
 
     return jsonify(traveling)
 
+
 @app.route('/manage_deliveries', methods=['POST'])
 def manage_deliveries():
-
     id = request.get_json()
     id = id["ID"]
 
@@ -48,6 +63,7 @@ def manage_deliveries():
     data = {"Vehicles": vei, "Packages": pack}
 
     return jsonify(data)
+
 
 @app.route('/assign_C', methods=['POST'])
 def assign_courriers():
@@ -84,6 +100,7 @@ def manage_courriers():
 
     return jsonify(data)
 
+
 @app.route('/updateKPI', methods=['POST'])
 def updateKPI():
     data = request.get_json()
@@ -93,6 +110,7 @@ def updateKPI():
     cursor.execute(sql)
     db.commit()
     return "Done"
+
 
 @app.route('/courier_opHome', methods=['POST'])
 def courier_ophome():
