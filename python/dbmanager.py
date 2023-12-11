@@ -11,8 +11,8 @@ CORS(app, resources={r'*': {'origins': '*'}})
 db = sqlite3.connect('../DB/amazonleafdb.sqlite', check_same_thread=False)  # connect db
 cursor = db.cursor()
 
-@app.route('/manage_veichles', methods=['POST'])
-def manage_veichles():
+@app.route('/manage_vehicles', methods=['POST'])
+def manage_vehicles():
 
     data = request.get_json()
 
@@ -25,6 +25,23 @@ def manage_veichles():
 
     return jsonify(traveling)
 
+@app.route('/return_vehicle', methods=['POST'])
+def return_vehicle():
+    plate = (request.get_json())["plate"]
+    sql = f"select * from package where id_v = '{plate}' and isDelivered = 0"
+    cursor.execute(sql)
+    p = cursor.fetchall()
+
+    for package in p:
+        sql = f"UPDATE package SET delivery_date = current_timestamp and isDelivered = true WHERE code = '{package[0]}'"
+        cursor.execute(sql)
+        db.commit()
+
+    sql = f"UPDATE vehicle SET available = 1 WHERE plate = '{plate}'"
+    cursor.execute(sql)
+    db.commit()
+    return "Done"
+
 @app.route('/manage_deliveries', methods=['POST'])
 def manage_deliveries():
 
@@ -34,7 +51,7 @@ def manage_deliveries():
     v = db.cursor()
     p = db.cursor()
 
-    sql = f"select * from package where id_c = {id}"
+    sql = f"select * from package where id_c = {id} and id_v IS NULL"
     p.execute(sql)
     pack = p.fetchall()
 
@@ -107,6 +124,19 @@ def courier_ophome():
 
     return jsonify(rows)
 
+@app.route('/setpackagevehicle', methods=['POST'])
+def setpackagevehicle():
+    data = request.get_json()
+    for package in data["packages"]:
+        sql = f"UPDATE package SET id_v = '{data['plate']}' WHERE code = '{package}'"
+        print(sql)
+        cursor.execute(sql)
+        db.commit()
+    sql = f"UPDATE vehicle SET available = 0 WHERE plate = '{data['plate']}'"
+    print(sql)
+    cursor.execute(sql)
+    db.commit()
+    return "Done"
 
 @app.route('/addvehicle', methods=['POST'])
 def addvehicle():

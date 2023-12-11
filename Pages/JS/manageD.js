@@ -35,6 +35,7 @@ $(document).ready(function () {
 
 var is_selected = 0;
 var counter = 0;
+var packages = [];
 var actualw = 0;
 var actualv = 0;
 
@@ -137,6 +138,7 @@ function putpack(elem) {
         let newline = "<tr>";
         newline += "<td id = 'pack_' " + counter + ">" + code + "</td><td>" + wei + "</td><td>" + vol + "</td>";
         newline += "</tr>";
+        packages.push(code)
 
         tab.innerHTML += newline;
 
@@ -149,6 +151,21 @@ function putpack(elem) {
 
 function assigtoveicle() {
     if(is_selected && counter > 0){
-        console.log("napoli");
+        const jsonBuild = {
+            "plate": `${$("#hidden_plate")[0].value}`,
+            "packages":packages
+        }
+        console.log(jsonBuild);
+
+        const url = "http://127.0.0.1:10000";
+        const xhttpr = new XMLHttpRequest();
+        xhttpr.open('POST', url + '/setpackagevehicle', true);
+        xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttpr.send(JSON.stringify(jsonBuild));
+        xhttpr.onload = () => {
+            if (xhttpr.status === 200) {
+                window.location.href = "manageVehicles.html"
+            }
+        }
     }
 }

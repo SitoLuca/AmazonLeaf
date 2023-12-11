@@ -3,7 +3,7 @@ $(document).ready(function () {
     const url = "http://127.0.0.1:10000";
 
     const xhttpr = new XMLHttpRequest();
-    xhttpr.open('POST', url + '/manage_veichles', true);
+    xhttpr.open('POST', url + '/manage_vehicles', true);
     xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttpr.send(JSON.stringify({'idc': JSON.parse(readCookie("user")).company}))
 
@@ -35,7 +35,14 @@ $(document).ready(function () {
 });
 
 function return_v(plate){
-
-
-
+    const url = "http://127.0.0.1:10000";
+    const xhttpr = new XMLHttpRequest();
+    xhttpr.open('POST', url + '/return_vehicle', true);
+    xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttpr.send(JSON.stringify({"plate":`${plate}`}));
+    xhttpr.onload = () => {
+        if (xhttpr.status === 200) {
+            window.location.href = "manageDeliveries.html"
+        }
+    }
 }
