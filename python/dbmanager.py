@@ -42,6 +42,7 @@ def return_vehicle():
     db.commit()
     return "Done"
 
+
 @app.route('/manage_deliveries', methods=['POST'])
 def manage_deliveries():
 
@@ -51,7 +52,7 @@ def manage_deliveries():
     v = db.cursor()
     p = db.cursor()
 
-    sql = f"select * from package where id_c = {id} and id_v IS NULL"
+    sql = f"select * from package where id_c = {id}"
     p.execute(sql)
     pack = p.fetchall()
 
