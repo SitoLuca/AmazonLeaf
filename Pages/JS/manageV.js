@@ -3,7 +3,7 @@ $(document).ready(function () {
     const url = "http://127.0.0.1:10000";
 
     const xhttpr = new XMLHttpRequest();
-    xhttpr.open('POST', url + '/manage_veichles', true);
+    xhttpr.open('POST', url + '/manage_vehicles', true);
     xhttpr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttpr.send(JSON.stringify({'idc': JSON.parse(readCookie("user")).company}))
 

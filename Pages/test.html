@@ -2,70 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="CSS/login.css">
-    <script type="text/javascript" src="JS/jquery.js"></script>
-    <script type="text/javascript" src="JS/extra.js"></script>
-    <script type="text/javascript" src="JS/login.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .colored-div {
-            position: absolute;
+        /* Styling for the overlay background */
+        .overlay {
+            display: none;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #3498db; /* Set your desired background color */
-            opacity: 0.7; /* Adjust opacity as needed */
-            z-index: 1; /* Make sure the colored div is behind the image */
-            pointer-events: none; /* Allows clicks to pass through the colored div */
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        /* Add this if you want the colored div to have a scroll effect */
-        .colored-div::before {
-            content: '';
+        /* Styling for the popup box */
+        .popup {
+            display: none;
             position: fixed;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(to bottom, transparent, #3498db); /* Adjust gradient as needed */
-            z-index: -1;
-            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
         }
 
-        /* Add this if you want a smooth scrolling effect */
-        body {
-            overflow: hidden;
+        /* Close button style */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
         }
-
-        .container:hover {
-            overflow-y: scroll;
-        }
-
     </style>
 </head>
 <body>
 
-<div class="container">
-    <img  alt="cuia" src="../IMG/camion.png" class="box overlay">
-    <div class="colored-div"></div>
+<!-- Trigger button -->
+<button onclick="openPopup()">Open Popup</button>
+
+<!-- Overlay and Popup -->
+<div class="overlay" id="overlay" onclick="closePopup()"></div>
+<div class="popup" id="popup">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>Your Popup Content Goes Here</h2>
+    <!-- Add your HTML content here -->
 </div>
+
+<script>
+    function openPopup() {
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
 
 </body>
 </html>

@@ -11,7 +11,7 @@ $(document).ready(function () {
             const parsedResponse = JSON.parse(response)
             parsedResponse.Packages.forEach(function (pack) {
                 $('#package_tab')[0].innerHTML += `<tr class = 'packagerow'>` +
-                    `<td id = 'code'>${pack[0]}</td><td>${pack[1]}</td><td id = 'W'>${pack[2]}</td><td id = 'V'>${pack[3]}</td>` +
+                    `<td id="QR" onclick="showQrcode('${pack[0]}')"><img src='IMG/qrcode_icon.png' height="50px" width="auto" alt="qrcode"></td><td id = 'code'>${pack[0]}</td><td>${pack[1]}</td><td id = 'W'>${pack[2]}</td><td id = 'V'>${pack[3]}</td>` +
                     `</tr>`;
             });
 

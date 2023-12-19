@@ -28,3 +28,28 @@ function readCookie(name) {
 function unsetCookie(cookieName) {
     document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
+
+function generateQRCodeBase64(text) {
+    // Create a QRCode instance
+    var qrcode = new QRCode(document.createElement("div"), {
+        text: text,
+        width: 128,
+        height: 128
+    });
+
+    // Create a canvas element
+    var canvas = document.createElement("canvas");
+    canvas.width = qrcode._el.firstChild.width;
+    canvas.height = qrcode._el.firstChild.height;
+
+    // Get the canvas 2d context
+    var context = canvas.getContext("2d");
+
+    // Draw the QR code on the canvas
+    context.drawImage(qrcode._el.firstChild, 0, 0);
+
+    // Convert the canvas content to a base64-encoded image
+    var base64Image = canvas.toDataURL("image/png");
+
+    return base64Image;
+}

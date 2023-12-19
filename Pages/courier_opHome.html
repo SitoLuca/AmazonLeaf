@@ -9,7 +9,7 @@
         <script type="text/javascript" src="JS/jquery.js"></script>
         <script type="text/javascript" src="JS/extra.js"></script>
         <script type="text/javascript" src="JS/courierhome.js"></script>
-        <script type="text/javascript" src="JS/extra.js"></script>
+        <script type="text/javascript" src="JS/calculateKPI.js"></script>
         <script type="text/javascript">
             $(function(){
                 $("#navbar_load").load("Components/navbar.html");
@@ -26,9 +26,149 @@
                 crossorigin="anonymous"></script>
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+        <style>
+
+            .overlay {
+                position: fixed; /* Sit on top of the page content */
+                display: none; /* Hidden by default */
+                width: 100%; /* Full width (cover the whole page) */
+                height: 100%; /* Full height (cover the whole page) */
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+                z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+                cursor: pointer; /* Add a pointer on hover */
+            }
+
+            /* Styling for the popup box */
+            .popup {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 20px;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+
+            /* Close button style */
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+            }
+        </style>
 
     </head>
     <body>
+        <div class="overlay" id="overlay" onclick="closePopup()"></div>
+        <div class="popup" id="popup">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <div class="card">
+                <form method="post" >
+                    <div class="form-group container align-bottom">
+                        <div class="row align-bottom">
+                            <div class="col-sm-4 align-bottom">
+                                <label for="energia_elettrica">Annual electricity consumption?</label>
+                                <input type="text" class="form-control" id="energia_elettrica" name="energia_elettrica"
+                                       pattern="[0-9]+" required>
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="fotovoltaico">Share of annual electricity produced by photovoltaic panels</label>
+                                <input type="text" class="form-control" id="fotovoltaico" name="fotovoltaico"
+                                       pattern="[0-9]+" required>
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="metano">Annual consumption of methane gas</label>
+                                <input type="text" class="form-control" id="metano" name="metano" pattern="[0-9]+">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 align-bottom">
+                                <label for="gpl">Annual consumption of LPG</label>
+                                <input type="text" class="form-control" id="gpl" name="gpl" pattern="[0-9]+">
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="gasolio">Annual diesel consumption</label>
+                                <input type="text" class="form-control" id="gasolio" name="gasolio" pattern="[0-9]+">
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="km_benzina">Total annual mileage of company petrol vehicles</label>
+                                <input type="text" class="form-control" id="km_benzina" name="km_benzina"
+                                       pattern="[0-9]+">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 align-bottom">
+                                <label for="km_diesel">Total annual mileage of diesel company vehicles</label>
+                                <input type="text" class="form-control" id="km_diesel" name="km_diesel"
+                                       pattern="[0-9]+">
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="km_gpl">Total annual mileage of LPG company vehicles</label>
+                                <input type="text" class="form-control" id="km_gpl" name="km_gpl" pattern="[0-9]+">
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="km_metano">Total annual mileage of methane company vehicles</label>
+                                <input type="text" class="form-control" id="km_metano" name="km_metano" pattern="[0-9]+">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 align-bottom">
+                                <label for="km_eletric">Total annual mileage of full electric company vehicles</label>
+                                <input type="text" class="form-control" id="km_eletric" name="km_eletric"
+                                       pattern="[0-9]+">
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="km_plug">Total annual mileage of plug-in hybrid company vehicles</label>
+                                <input type="text" class="form-control" id="km_plug" name="km_plug" pattern="[0-9]+">
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="km_mid">Total annual mileage of mid hybrid company vehicles</label>
+                                <input type="text" class="form-control" id="km_mid" name="km_mid" pattern="[0-9]+">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 align-bottom">
+                                <label for="voli_brevi">Number of short-haul flights per year (less than 3 hours of flight time)</label>
+                                <input type="text" class="form-control" id="voli_brevi" name="voli_brevi"
+                                       pattern="[0-9]+">
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="voli_medi">Number of medium-haul flights per year (between 3 and 6 flight hours)</label>
+                                <input type="text" class="form-control" id="voli_medi" name="voli_medi"
+                                       pattern="[0-9]+">
+                            </div>
+                            <div class="col-sm-4 align-bottom">
+                                <label for="voli_lunghi">Number of long-haul flights per year (between 6 and 9 flight hours)</label>
+                                <input type="text" class="form-control" id="voli_lunghi" name="voli_lunghi"
+                                       pattern="[0-9]+">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 align-bottom">
+                                <label for="voli_xl">Number of very long-haul flights per year (over 9 flight hours)</label>
+                                <input type="text" class="form-control" id="voli_xl" name="voli_xl" pattern="[0-9]+">
+                            </div>
+                            <div class="col-sm-6 align-bottom">
+                                <label for="num_dipendenti">Numbers of company employees</label>
+                                <input type="text" class="form-control" id="num_dipendenti" name="num_dipendenti"
+                                       pattern="[0-9]+">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="id_azienda" name="id_azienda" value="">
+
+                    <button type="button" onclick="calculateKPI()" class="btn btn-outline-success" style="margin-top: 3%;position: relative; transform: translate(50%); font-size: 20px" id = "Sub-Button">Calculate your sostenibility index</button>
+                </form>
+            </div>
+        </div>
         <div id="navbar_load"></div>
         <div class="table-wrapper">
             <h1>Your Vehicles</h1>
@@ -89,5 +229,16 @@
                 </div>
             </div>
         </div>
+        <script>
+            function openPopup() {
+                document.getElementById("overlay").style.display = "block";
+                document.getElementById("popup").style.display = "block";
+            }
+
+            function closePopup() {
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("popup").style.display = "none";
+            }
+        </script>
     </body>
 </html>

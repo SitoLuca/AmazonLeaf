@@ -16,26 +16,21 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav_buttons">
             </ul>
             <script type="text/javascript">
+                let app = window.location.pathname.split("/")
+                app = app[app.length-1]
                 if(JSON.parse(readCookie("user")).type === "operator"){
                     document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +
                         '                    <a class="nav-link active" href="operatorHome.html">Home</a>\n' +
                         '                </li>'+'<li class="nav-item">\n' +
                         '                    <a class="nav-link active" href="manageCouriers.html">Manage Couriers</a>\n' +
                         '                </li>'
-                } else {
-                    document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +
-                        '                    <a class="nav-link" href="courier_opHome.html">Courier</a>\n' +
-                        '                </li><li class="nav-item">\n' +
-                        '                        <a class="nav-link" href="#">Manage Deliveries</a>\n' +
-                        '                    </li>'
                 }
             </script>
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 <script type="text/javascript">
                     if(JSON.parse(readCookie("user")).type === "courier_op") {
-                        document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +
-                            '                    <button type="button" class="btn btn-outline-success" style="padding-right: 1rem;" onclick="window.location.href=\'calculateIS.html\'">Calculate KPI</button>\n' +
-                            '                </li>' + '<li><a class="nav-link" href="courier_opHome.html">Home</a></li><li><a class="nav-link" href="manageDeliveries.html">Manage Deliveries</a></li><li><a class="nav-link" href="manageVehicles.html">Manage Vehicles</a></li>'
+                        if("courier_opHome.html"=== app) document.getElementById('nav_buttons').innerHTML = '<li class="nav-item">\n' +     '                    <button type="button" class="btn btn-outline-success" style="padding-right: 1rem;" onclick="openPopup()">Calculate KPI</button></li>\n'
+                        document.getElementById('nav_buttons').innerHTML += '<li><a class="nav-link" href="courier_opHome.html">Home</a></li><li><a class="nav-link" href="manageDeliveries.html">Manage Deliveries</a></li><li><a class="nav-link" href="manageVehicles.html">Manage Vehicles</a></li>'
                     }
                  </script>
                 <li class="nav-item"><label id="KPI"></label></li>
