@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Info</title>
+        <script type="text/javascript" src="JS/jquery.js"></script>
+        <script type="text/javascript" src="JS/extra.js"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                $("#navbar_load").load("Components/navbar.html");
+            });
+        </script>
+        <link rel="stylesheet" href="CSS/navbar.css">
+        <link rel="stylesheet" href="CSS/bootstrap.min.css">
+        <script src="JS/bootstrap.bundle.min.js"></script>
+
+        <script src="JS/popper.min.js"></script>
+        <script src="JS/bootstrap.min.js"></script>
+        <style>
+            .center {
+                margin: auto;
+                width: 50%;
+                padding: 30px;
+            }
+
+            .main-div{
+                background-color: transparent;
+                box-shadow: 0 0 3px #000;
+                margin-top: 2%;
+                border-radius: 10px;
+                text-align: center;
+                font-size: 32pt;
+                position: relative;
+            }
+
+            .img-pic{
+                border-radius: 25px;
+            }
+S
+
+        </style>
+    </head>
+    <body>
+        <div id="navbar_load"></div>
+        <div class="center main-div">
+            <a class="navbar-brand" href="#"><label style="color: #FF9900; font-weight: bold">Amazon</label> <img alt="logo" src="IMG/AmazonLeaflogo-transformed-min.webp" height="60px" width="auto"> <label style="color: #0FBC88; font-weight: bold">Leaf </label></a>
+            <p style="font-size: 11pt; margin-top: 5%;" align="justify">
+                The purpose of this project is to help the multinational company Amazon to augment its environmental sustainability by reducing the CO2 emissions<br><br>
+
+                The system will be structured to make choices automatically to improve sustainability during the selection phase of the courier responsible for delivering parcels without giving up the functionality of a normal application for managing sorting centers.<br><br>
+
+                The main effort will be that of selecting the courier, this will be characterized by a sustainability index (KPI).<br>
+                At the time of shipment, the system will provide a list of available couriers sorted by KPI which will be calculated based on data entered by the company itself.
+            </p>
+            <h2>Partecipants</h2>
+            <div style="font-size: 11pt; display: flex; margin-bottom: 5%" class="center">
+                <div style="display: grid; margin-right: 20%">
+                    <img class="img-pic" alt="info" src="IMG/luca.webp" width="150px" height="auto">
+                    <label><a href="https://www.linkedin.com/in/luca-sito-94a2b2229/" target="_blank">Luca Sito</a> 0124/2612</label>
+                </div>
+                <div style="display: grid;margin-left: 20%">
+                    <img  class="img-pic" alt="info" src="IMG/vittorio.webp" width="150px" height="auto">
+                    <label><a href="https://www.linkedin.com/in/vittorio-picone-916319168/" target="_blank">Vittorio Picone</a> 0124/2584</label>
+                </div>
+            </div>
+            <div style="font-size: 11pt;bottom: 0; position: absolute; transform: translate(-50%); left: 50%;">
+                Project made for the TechWeb exam, leaded by <b>Prof. R. Montella</b>
+                <a href="http://www.uniparthenope.it" target="_blank"><img class="img-pic" alt="info" src="IMG/uniparthenope.webp" width="75px" height="auto"></a>
+            </div>
+        </div>
+    </body>
+</html>

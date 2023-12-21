@@ -1,0 +1,7 @@
+@font-face {
+    font-family: amazon ember;
+    font-style: normal;
+    font-weight: 400;
+    src: local("font/Amazon Ember"),
+    url("font/Amazon Ember.woff") format("woff");
+}
