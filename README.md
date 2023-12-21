@@ -3,9 +3,9 @@
 Project for the TechWeb exam 2023/2024 - Prof. R. Montella  
 
 ## Participants
-Luca Sito 0124/2612
+[Luca Sito](https://www.linkedin.com/in/luca-sito-94a2b2229/) 0124/2612
 
-Vittorio Picone 0124/2584
+[Vittorio Picone](https://www.linkedin.com/in/vittorio-picone-916319168/) 0124/2584
 
 ## Description
 The purpose of this project is to help the multinational company Amazon to augment its environmental sustainability by reducing the CO2 emissions
