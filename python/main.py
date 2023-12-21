@@ -13,9 +13,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="runs the server functions for AmazonLeaf")
 
     # Define command-line arguments
-    parser.add_argument('--host_api', default='localhost', help='Host API address (default: localhost).')
-    parser.add_argument('--port_api', type=int, default=10000, help='Port API number (default: 10000).')
-
     parser.add_argument('--host_web', default='localhost', help='Host WEB address (default: localhost).')
     parser.add_argument('--port_web', type=int, default=80, help='Port WEB number (default: 80).')
     # Parse the command-line arguments
@@ -33,7 +30,7 @@ if __name__ == "__main__":
     process.start()
 
     # Spawn a process for the API server on localhost and port 10000
-    process = multiprocessing.Process(target=api_server, args=(False, args.host_api, args.port_api))
+    process = multiprocessing.Process(target=api_server, args=(False, "localhost", 10000))
     processes.append(process)
     process.start()
 

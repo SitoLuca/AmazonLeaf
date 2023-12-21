@@ -56,10 +56,10 @@ At the time of shipment, the system will provide a list of available couriers so
   for managing the SQLite database
 - **GitHub**:
   for the version control system
-- **SQLite 3**
+- **SQLite 3**:
   as the DBMS since is lightweight and file-based
 
-### How to install and open locally the project
+### How to install and run locally the project
 1. Download **[Python 3.11](https://www.python.org/downloads/release/python-3110/)** from the official website
 2. Run the following command in the terminal
     ```bash
@@ -71,21 +71,23 @@ At the time of shipment, the system will provide a list of available couriers so
     ```bash
     pip install -r requirements.txt
     ```
-4. Run the python main.py script 
+4. Run the python main.py script making sure that the 10000 port is free (it is needed for the API to run)
     ```bash
     python main.py
     ```
    If no arguments are passed, the default addresses are:
     - http://localhost:80 for the webserver
     - http://localhost:10000 for the API server
+   
    The arguments are:
-    - **--host_api**: defines the API server host address (string)
-    - **--port_api**: defines the API server port number (int)
-    - **--host_web**: defines the Webserver host address (string)
-    - **--host_web**: defines the APIserver port number (int)
+   - **--host_web**: defines the Webserver host address (string)
+   - **--port_web**: defines the Webserver port number (int)
 
-   You can specify as many arguments as you want.
-
+   You can specify as many arguments as you want, for example:
+    ```bash
+    python main.py --port_web 11000
+    ```
+    Now the webserver will be run on the 11000 port
 
 
 
