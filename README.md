@@ -1,4 +1,4 @@
-# AmazonLeaf <img src="https://raw.githubusercontent.com/SitoLuca/AmazonLeaf/master/Pages/IMG/AmazonLeaflogo-transformed-min.webp?token=GHSAT0AAAAAACJHRM6YOIXII3467BGSIRS6ZMEJUVA" alt="drawing" width="7%"/>
+# AmazonLeaf <img src="https://raw.githubusercontent.com/SitoLuca/AmazonLeaf/master/Pages/IMG/AmazonLeaflogo-transformed-min.webp?token=GHSAT0AAAAAACJHRM6YOIXII3467BGSIRS6ZMEJUVA" alt="drawing" width="5%"/>
 
 Project for the TechWeb exam 2023/2024 - Prof. R. Montella  
 
@@ -59,7 +59,7 @@ At the time of shipment, the system will provide a list of available couriers so
   as the DBMS since is lightweight and file-based
 
 ### How to install and run locally the project
-1. Download **[Python 3.11](https://www.python.org/downloads/release/python-3110/)** from the official website
+1. Download **<a href="https://www.python.org/downloads/release/python-3110" target="_blank">Python 3.11</a>** from the official website
 2. Run the following command in the terminal
     ```bash
    git clone https://github.com/SitoLuca/AmazonLeaf.git
@@ -75,7 +75,7 @@ At the time of shipment, the system will provide a list of available couriers so
     python main.py
     ```
    If no arguments are passed, the default address is:
-    - http://localhost:80 for the webserver
+    - <a href="http://localhost:80" target="_blank">http://localhost:80</a> for the webserver
    
    The arguments are:
    - **--host_web**: defines the Webserver host address (string)
