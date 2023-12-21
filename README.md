@@ -71,13 +71,12 @@ At the time of shipment, the system will provide a list of available couriers so
     ```bash
     pip install -r requirements.txt
     ```
-4. Run the python main.py script making sure that the 10000 port is free (it is needed for the API to run)
+4. Run the python main.py script, making sure that the 10000 port is free (it is needed for the API to run)
     ```bash
     python main.py
     ```
-   If no arguments are passed, the default addresses are:
+   If no arguments are passed, the default address is:
     - http://localhost:80 for the webserver
-    - http://localhost:10000 for the API server
    
    The arguments are:
    - **--host_web**: defines the Webserver host address (string)
