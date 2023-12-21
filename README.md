@@ -87,6 +87,13 @@ At the time of shipment, the system will provide a list of available couriers so
     python main.py --port_web 11000
     ```
     Now the webserver will be run on the 11000 port
+5. For testing the website you can access by using one of the following accounts:
 
+   | Courier Operators             | Hub Operartors                |
+   |-------------------------------|-------------------------------|
+   | Patrick.Greene@amazonleaf.com | Gabriel.Kim@amazonleaf.com    |
+   | Isaac.Peterson@amazonleaf.com | Adrian.Young@amazonleaf.com   |
+   | Leah.Bailey@amazonleaf.com    | Isabella.Baker@amazonleaf.com |
 
+    The password is by default **amazonleaf**
 
