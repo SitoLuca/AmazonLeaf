@@ -102,29 +102,29 @@ function putpack(elem) {
         let camW = $("#camionW");
 
         if (percv > 25){ //not that elegant :\
-            camV.attr("src","../IMG/camion_loading_bar_25.png");
+            camV.attr("src","IMG/camion_loading_bar_25.png");
         }
         if (percv > 50){
-            camV.attr("src","../IMG/camion_loading_bar_50.png");
+            camV.attr("src","IMG/camion_loading_bar_50.png");
         }
         if (percv > 75){
-            camV.attr("src","../IMG/camion_loading_bar_75.png");
+            camV.attr("src","IMG/camion_loading_bar_75.png");
         }
         if (percv > 98){
-            camV.attr("src","../IMG/camion_loading_bar_full.png");
+            camV.attr("src","IMG/camion_loading_bar_full.png");
         }
 
         if (percw > 25){
-            camW.attr("src","../IMG/camion_loading_bar_25.png");
+            camW.attr("src","IMG/camion_loading_bar_25.png");
         }
         if (percw > 50){
-            camW.attr("src","../IMG/camion_loading_bar_50.png");
+            camW.attr("src","IMG/camion_loading_bar_50.png");
         }
         if (percw > 75){
-            camW.attr("src","../IMG/camion_loading_bar_75.png");
+            camW.attr("src","IMG/camion_loading_bar_75.png");
         }
         if (percw > 98){
-            camW.attr("src","../IMG/camion_loading_bar_full.png");
+            camW.attr("src","IMG/camion_loading_bar_full.png");
         }
 
 

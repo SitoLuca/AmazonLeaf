@@ -17,7 +17,7 @@ $(document).ready(function () {
             if(plates.length > 0) {
                 plates.forEach((p) => {
 
-                    const img = "<img width='400' src='../IMG/walking_camion.gif'>"
+                    const img = "<img width='400' src='IMG/walking_camion.gif'>"
 
                     let newelem = '<div class="pagecontent" id="vcontent"><div class = "d-flex flex-column" style="width: 400px"><h1 class="loading">'+p+' Is Traveling</h1>' + img + ' <input type="button" class="btn btn-success" value="Return" onclick="return_v(\''+p+'\')">';
 
