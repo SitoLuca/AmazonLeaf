@@ -1,12 +1,11 @@
-# AmazonLeaf <img src="https://raw.githubusercontent.com/SitoLuca/AmazonLeaf/master/Pages/IMG/AmazonLeaflogo-transformed-min.webp?token=GHSAT0AAAAAACJHRM6YOIXII3467BGSIRS6ZMEJUVA" alt="drawing" width="5%"/>
+# AmazonLeaf <img src="https://raw.githubusercontent.com/SitoLuca/AmazonLeaf/master/Pages/IMG/AmazonLeaflogo-transformed-min.webp?token=GHSAT0AAAAAACJHRM6YOIXII3467BGSIRS6ZMEJUVA" alt="drawing" width="7%"/>
 
 Project for the TechWeb exam 2023/2024 - Prof. R. Montella  
 
 ## Participants
-[Luca Sito](https://www.linkedin.com/in/luca-sito-94a2b2229/) 0124/2612
+<a href="https://www.linkedin.com/in/luca-sito-94a2b2229/" target="_blank">Luca Sito</a> 0124/2612
 
-[Vittorio Picone](https://www.linkedin.com/in/vittorio-picone-916319168/) 0124/2584
-
+<a href="https://www.linkedin.com/in/vittorio-picone-916319168/" target="_blank">Vittorio Picone</a> 0124/2584
 ## Description
 The purpose of this project is to help the multinational company Amazon to augment its environmental sustainability by reducing the CO2 emissions
 
