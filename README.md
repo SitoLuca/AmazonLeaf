@@ -41,7 +41,7 @@ At the time of shipment, the system will provide a list of available couriers so
   - Bootstrap (JS)
   - JQuery
   - QRCode.min.js
-  - extra.js (custom libary)
+  - extra.js (custom library)
 
 - **Markup and stylesheet languages**:
     - Bootstrap
