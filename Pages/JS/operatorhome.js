@@ -18,6 +18,7 @@ $(document).ready(function () {
 
                     for (let i = 0; i < p.length; ++i) {
                         newline = "<tr>";
+                        newline += `<td id="QR" onclick="showQrcode('${p[i][0]}')"><img src='IMG/qrcode_icon.png' height="50px" width="auto" alt="qrcode"></td>`
                         newline += "<td>" + p[i][0] + "</td>";
                         newline += "<td>" + p[i][1] + "</td>";
                         newline += "<td>" + p[i][2] + "</td>";

@@ -3,11 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title>OperatorHome</title>
+        <link rel="stylesheet" href="JS/bootstrap4/bootstrap.min.css">
+        <script src="JS/bootstrap4/jquery-3.2.1.slim.min.js"></script>
+        <script src="JS/bootstrap4/popper.min.js" ></script>
+        <script src="JS/bootstrap4/bootstrap.min.js"></script>
         <link rel="stylesheet" href="CSS/operatorHome.css">
         <link rel="stylesheet" href="CSS/navbar.css">
         <script type="text/javascript" src="JS/jquery.js"></script>
         <script type="text/javascript" src="JS/operatorhome.js"></script>
         <script type="text/javascript" src="JS/extra.js"></script>
+        <script type="text/javascript" src="JS/qrcode.min.js"></script>
         <link rel="apple-touch-icon" sizes="180x180" href="IMG/icon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="IMG/icon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="IMG/icon/favicon-16x16.png">
@@ -20,15 +25,58 @@
         </script>
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
         <script src="JS/bootstrap.bundle.min.js"></script>
+        <style>
+            #overlay {
+                position: fixed; /* Sit on top of the page content */
+                display: none; /* Hidden by default */
+                width: 100%; /* Full width (cover the whole page) */
+                height: 100%; /* Full height (cover the whole page) */
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+                z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+                cursor: pointer; /* Add a pointer on hover */
+            }
+            .popup {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 20px;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
             <div id="navbar_load"></div>
+            <div id="overlay" onclick="closePopup()"></div>
+            <div class="popup" id="popup">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <label id="code_overlay" style="font-weight: bold"></label>
+                <img id="qrcode_overlay" width="100%" alt="qrcode" src="">
+            </div>
             <div class = "table-wrapper">
             <h1>All Packages</h1>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><strong>Add Package</strong></button>
             <table style="width:100%">
                 <thead>
                     <tr>
+                        <td>
+                            QR
+                        </td>
                         <td>
                             <h4>Code</h4>
                         </td>
@@ -77,4 +125,21 @@
             </div>
         </div>
     </body>
+    <script type="text/javascript">
+        function showQrcode(qrcode){
+            const qr = generateQRCodeBase64(qrcode)
+            $("#qrcode_overlay")[0].src = qr
+            $("#code_overlay")[0].innerHTML = qrcode
+            openPopup()
+        }
+        function openPopup() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
 </html>
