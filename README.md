@@ -74,6 +74,10 @@ At the time of shipment, the system will provide a list of available couriers so
     ```bash
     python main.py
     ```
+   In case an error occurs on the webserver module, try to run the script with sudo (error frequent on macOS)
+   ```bash
+    sudo python main.py
+   ```
    If no arguments are passed, the default address is:
     - <a href="http://localhost:80" target="_blank">http://localhost:80</a> for the webserver
    
@@ -86,7 +90,7 @@ At the time of shipment, the system will provide a list of available couriers so
     python main.py --port_web 11000
     ```
     Now the webserver will be run on the 11000 port
-5. For testing the website you can access by using one of the following accounts:
+6. For testing the website you can access by using one of the following accounts:
 
    | Courier Operators             | Hub Operartors                |
    |-------------------------------|-------------------------------|
