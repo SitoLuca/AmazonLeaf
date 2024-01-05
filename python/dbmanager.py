@@ -99,7 +99,7 @@ def manage_couriers():
     p.execute(sql)
     pack = p.fetchall()
 
-    sql = f"select c.*, sum(v.volumecap) as vol from courier c join vehicle v on  v.id_courier = c.id where v.available = 1 group by c.id order by c.KPI desc"
+    sql = f"select c.*, sum(v.volumecap) as vol from courier c join vehicle v on  v.id_courier = c.id where v.available = 1 and c.KPI is not null group by c.id order by c.KPI "
     p.execute(sql)
     cou = p.fetchall()
 
